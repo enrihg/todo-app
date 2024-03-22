@@ -1,17 +1,11 @@
 import './App.css';
-import Todo from './components/Todo'
+import TodoList from './components/TodoList'
 
-function App() {
+function App(): JSX.Element {
   return (
-    <>
+    <> 
       <main className='grid content-center divide-y px-4 bg-yellow-100 w-screen h-screen bg-red-40'>
-        <Todo />
-        <Todo />
-        <Todo />
-        <Todo />
-        <Todo />
-        <Todo />
-        <Todo />
+      <TodoList/>
       </main>
     </>
   );
