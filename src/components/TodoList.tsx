@@ -12,9 +12,15 @@ const initialTodos = [
 function TodoList(): JSX.Element {
     const [todos, setTodos] = useState(initialTodos);
 
-    const addTodo = (text) => {
+    const addTodo = (text:string) => {
         setTodos(prevTodos => {
-        return [...prevTodos, { text:text, id: 8, completed:false}]
+        return [...prevTodos, { text:text, id: 8, completed:false}] //cambiar el id!!!
+        })
+    }
+
+    const removeTodo = (id:number) => {
+        setTodos((prevTodos) => {
+            return prevTodos.filter((t) => t.id !== id);
         })
     }
 
@@ -22,7 +28,7 @@ function TodoList(): JSX.Element {
         <ul>
             <TodoForm addTodo={addTodo}/>
             {todos.map((todo) => (
-                <TodoItem id={todo.id} text={todo.text} completed={todo.completed}/>
+                <TodoItem key={todo.id} todo={todo} remove={removeTodo}/>
             ))}
         </ul>
     )

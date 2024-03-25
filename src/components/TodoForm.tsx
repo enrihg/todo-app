@@ -1,19 +1,17 @@
-import { ChangeEvent, useState } from "react";
+import { useState } from "react";
 
 function TodoForm({ addTodo }) {
     const [text, setText] = useState("");
 
-    const handleSubmit = (evt:SubmitEvent) => {
+    const handleSubmit = (evt:React.FormEvent):void => {
         evt.preventDefault();
         addTodo(text);
         setText("");
     }
 
-    const handleChange = (evt:ChangeEvent) => {
+    const handleChange = (evt:React.ChangeEvent<HTMLInputElement>):void => {
         setText(evt.target.value);
     }
-
-
 
     return (
         <li className=" flex justify-between border-b-solid-[1px] h-[52px] py-4 px-5 bg-white mb-4">
