@@ -1,15 +1,16 @@
 type ComponentProps = {
     todo: {
-        id: number,
+        id: string,
         text: string,
         completed: boolean,
     }
-    remove: (id: number) => void;
+    remove: (id: string) => void;
 }
 
 function TodoItem({ todo, remove }: ComponentProps): JSX.Element {
 
     const removeTodo = () => {
+        console.log(todo.id)
         remove(todo.id)
     }
 

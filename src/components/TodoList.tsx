@@ -1,12 +1,13 @@
 import { useState } from "react";
+import { v4 as uuidv4 } from 'uuid';
 import TodoItem from "./TodoItem";
 import TodoForm from "./TodoForm";
 
 const initialTodos = [
-    { id: 1, text: 'comprar yerba', completed: true },
-    { id: 2, text: 'comprar verdura', completed: false },
-    { id: 3, text: 'lavar la ropa', completed: true },
-    { id: 4, text: 'terminar el todo proyect', completed: false },
+    { id: uuidv4(), text: 'comprar yerba', completed: true },
+    { id: uuidv4(), text: 'comprar verdura', completed: false },
+    { id: uuidv4(), text: 'lavar la ropa', completed: true },
+    { id: uuidv4(), text: 'terminar el todo proyect', completed: false },
 ]
 
 function TodoList(): JSX.Element {
@@ -14,11 +15,11 @@ function TodoList(): JSX.Element {
 
     const addTodo = (text:string) => {
         setTodos(prevTodos => {
-        return [...prevTodos, { text:text, id: 8, completed:false}] //cambiar el id!!!
+        return [...prevTodos, { text:text, id: uuidv4(), completed:false}]
         })
     }
 
-    const removeTodo = (id:number) => {
+    const removeTodo = (id:string) => {
         setTodos((prevTodos) => {
             return prevTodos.filter((t) => t.id !== id);
         })
