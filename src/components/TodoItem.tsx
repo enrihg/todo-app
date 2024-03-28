@@ -1,4 +1,6 @@
 import { useState } from "react";
+import iconCheck from '/src/assets/images/icon-check.svg'
+import iconCross from '/src/assets/images/icon-cross.svg';
 
 type ComponentProps = {
     todo: {
@@ -23,14 +25,13 @@ function TodoItem({ todo, remove }: ComponentProps): JSX.Element {
     }
 
     return (
-        <li key={todo.id} className=" flex justify-between border-b-solid-[1px] h-[52px] py-4 px-5 bg-white">
-            <button onClick={toggleCompleted} className="w-5 h-5 rounded-full bg-black">
-                <svg xmlns="http://www.w3.org/2000/svg" width="11" height="9"><path fill="none" stroke="#FFF" strokeWidth="2" d="M1 4.304L3.696 7l6-6" /></svg>
+        <li key={todo.id} className="flex  items-center h-[52px] py-4 px-5 bg-white">
+            <button onClick={toggleCompleted} className={`flex justify-center items-center w-5 h-5 rounded-full border ${completed ? 'bg-gradient-to-r from-gradient-1 to-gradient-2 border-0' : ''}`}>
+                <img src={iconCheck} alt="complete icon" />
             </button>
-            {todo.text}
-            {/* <span>{completed ? "completed" : "not completed"}</span> */}
-            <button onClick={removeTodo}>
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"><path fill="#494C6B" fillRule="evenodd" d="M16.97 0l.708.707L9.546 8.84l8.132 8.132-.707.707-8.132-8.132-8.132 8.132L0 16.97l8.132-8.132L0 .707.707 0 8.84 8.132 16.971 0z" /></svg>
+            <p className={`grow ml-3  ${completed ? 'text-light-300 line-through' : 'text-light-500'}`}>{todo.text}</p>
+            <button onClick={removeTodo} className="w-3 h-3">
+                <img src={iconCross} alt="delete icon" />
             </button>
         </li>
     )

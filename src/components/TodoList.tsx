@@ -13,26 +13,28 @@ const initialTodos = [
 function TodoList(): JSX.Element {
     const [todos, setTodos] = useState(initialTodos);
 
-    const addTodo = (text:string) => {
+    const addTodo = (text: string) => {
         setTodos(prevTodos => {
-        return [...prevTodos, { text:text, id: uuidv4(), completed:false}]
+            return [...prevTodos, { text: text, id: uuidv4(), completed: false }]
         })
     }
 
-    const removeTodo = (id:string) => {
+    const removeTodo = (id: string) => {
         setTodos((prevTodos) => {
             return prevTodos.filter((t) => t.id !== id);
         })
     }
 
     return (
-        <ul>
-            <TodoForm addTodo={addTodo}/>
-            {todos.map((todo) => (
-                <TodoItem key={todo.id} todo={todo} remove={removeTodo}/>
-            ))}
-        </ul>
+        <>
+            <TodoForm addTodo={addTodo} />
+            <ul className="rounded-[5px] divide-y overflow-hidden">
+                {todos.map((todo) => (
+                    <TodoItem key={todo.id} todo={todo} remove={removeTodo} />
+                ))}
+            </ul>
+        </>
     )
-}   
+}
 
 export default TodoList
