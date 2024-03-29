@@ -29,7 +29,7 @@ function TodoItem({ todo, remove }: ComponentProps): JSX.Element {
             <button onClick={toggleCompleted} className={`flex justify-center items-center w-5 h-5 rounded-full border ${completed ? 'bg-gradient-to-r from-gradient-1 to-gradient-2 border-0' : ''}`}>
                 <img src={iconCheck} alt="complete icon" />
             </button>
-            <p className={`grow ml-3  ${completed ? 'text-light-300 line-through' : 'text-light-500'}`}>{todo.text}</p>
+            <p className={`grow ml-3 text-xs  ${completed ? 'text-light-300 line-through' : 'text-light-500'}`}>{todo.text}</p>
             <button onClick={removeTodo} className="w-3 h-3">
                 <img src={iconCross} alt="delete icon" />
             </button>

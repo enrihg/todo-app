@@ -9,8 +9,10 @@ function TodoForm({ addTodo }: ComponentProps) {
 
     const handleSubmit = (evt: React.FormEvent): void => {
         evt.preventDefault();
-        addTodo(text);
-        setText("");
+        if (text !== "") {
+            addTodo(text);
+            setText("");
+        }
     }
 
     const handleChange = (evt: React.ChangeEvent<HTMLInputElement>): void => {
@@ -22,7 +24,7 @@ function TodoForm({ addTodo }: ComponentProps) {
             <button className="flex justify-center items-center w-5 h-5 rounded-full border">
                 <svg xmlns="http://www.w3.org/2000/svg" width="11" height="9"><path fill="none" stroke="#FFF" strokeWidth="2" d="M1 4.304L3.696 7l6-6" /></svg>
             </button>
-            <input type="text" value={text} onChange={handleChange} placeholder="Create a new todo..." className="ml-3 w-full" />
+            <input type="text" value={text} onChange={handleChange} placeholder="Create a new todo..." className="ml-3 w-full placeholder:text-xs" />
         </form>
 
     )
