@@ -20,11 +20,9 @@ function TodoForm({ addTodo }: ComponentProps) {
     }
 
     return (
-        <form onSubmit={handleSubmit} className="flex justify-start rounded-[5px] border-b-solid-[1px] h-[52px] py-4 px-5 bg-white mb-4">
-            <button className="flex justify-center items-center w-5 h-5 rounded-full border">
-                <svg xmlns="http://www.w3.org/2000/svg" width="11" height="9"><path fill="none" stroke="#FFF" strokeWidth="2" d="M1 4.304L3.696 7l6-6" /></svg>
-            </button>
-            <input type="text" value={text} onChange={handleChange} placeholder="Create a new todo..." className="ml-3 w-full placeholder:text-xs" />
+        <form onSubmit={handleSubmit} className="flex justify-start rounded-[5px] border-b-solid-[1px] h-[52px] py-4 px-5 bg-white dark:bg-dark-800 mb-4">
+            <button type="submit" className="flex justify-center items-center w-5 h-5 rounded-full border dark:border-dark-600"></button>
+            <input type="text" value={text} onChange={handleChange} placeholder="Create a new todo..." className="ml-3 w-full text-xs placeholder:text-xs dark:bg-dark-800 dark:text-dark-100" />
         </form>
 
     )

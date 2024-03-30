@@ -25,11 +25,11 @@ function TodoItem({ todo, remove }: ComponentProps): JSX.Element {
     }
 
     return (
-        <li key={todo.id} className="flex  items-center h-[52px] py-4 px-5 bg-white">
-            <button onClick={toggleCompleted} className={`flex justify-center items-center w-5 h-5 rounded-full border ${completed ? 'bg-gradient-to-r from-gradient-1 to-gradient-2 border-0' : ''}`}>
-                <img src={iconCheck} alt="complete icon" />
+        <li key={todo.id} className="flex  items-center h-[52px] py-4 px-5 bg-white dark:bg-dark-800">
+            <button onClick={toggleCompleted} className={`flex justify-center items-center w-5 h-5 rounded-full border ${completed ? 'bg-gradient-to-r from-gradient-1 to-gradient-2 border-0' : 'dark:border-dark-600'}`}>
+                <img className={completed ? "" : "hidden"} src={iconCheck} alt="complete icon" />
             </button>
-            <p className={`grow ml-3 text-xs  ${completed ? 'text-light-300 line-through' : 'text-light-500'}`}>{todo.text}</p>
+            <p className={`grow ml-3 text-xs  ${completed ? 'text-light-300 dark:text-dark-600 line-through' : 'text-light-500 dark:text-dark-100'}`}>{todo.text}</p>
             <button onClick={removeTodo} className="w-3 h-3">
                 <img src={iconCross} alt="delete icon" />
             </button>
