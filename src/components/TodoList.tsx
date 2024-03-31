@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from 'uuid';
 import TodoItem from "./TodoItem";
 import TodoForm from "./TodoForm";
@@ -7,15 +7,18 @@ import iconSun from "/src/assets/images/icon-sun.svg"
 
 const themeIcon = document.getElementById('theme-icon')! as HTMLImageElement ;
 
-const initialTodos = [
-    { id: uuidv4(), text: 'comprar yerba', completed: true },
-    { id: uuidv4(), text: 'comprar verdura', completed: false },
-    { id: uuidv4(), text: 'lavar la ropa', completed: true },
-    { id: uuidv4(), text: 'terminar el todo proyect', completed: false },
-]
+const getInitialData = () => {
+    const data = JSON.parse(localStorage.getItem("todos")!);
+    if (!data) return [];
+    return data;
+}
 
 function TodoList(): JSX.Element {
-    const [todos, setTodos] = useState(initialTodos);
+    const [todos, setTodos] = useState(getInitialData);
+
+    useEffect(() => {
+        localStorage.setItem("todos", JSON.stringify(todos));
+    },[todos]); 
 
     const addTodo = (text: string) => {
         setTodos(prevTodos => {
