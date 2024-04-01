@@ -15,6 +15,7 @@ const getInitialData = () => {
 
 function TodoList(): JSX.Element {
     const [todos, setTodos] = useState(getInitialData);
+    const [darkTheme, setDarkTheme] = useState(false)
 
     useEffect(() => {
         localStorage.setItem("todos", JSON.stringify(todos));
@@ -35,9 +36,11 @@ function TodoList(): JSX.Element {
     const toggleTheme = () => {
         document.documentElement.classList.toggle('dark');
         if (document.documentElement.classList.contains('dark')){
-            themeIcon.src = iconSun;
+            // themeIcon.src = iconSun;
+            setDarkTheme(true)
         } else {
-            themeIcon.src = iconMoon;
+            setDarkTheme(false)
+            // themeIcon.src = iconMoon;
         }
     }
 
@@ -46,7 +49,7 @@ function TodoList(): JSX.Element {
             <header className="flex justify-between items-center mb-10">
                 <span className="font-bold text-[20px] text-white tracking-[10px]">TODO</span>
                 <button onClick={toggleTheme}>
-                    <img id="theme-icon" className="w-5 h-5" src="" alt="light/dark theme"/>
+                    <img id="theme-icon" className="w-5 h-5" src={darkTheme ? iconSun : iconMoon} alt="light/dark theme"/>
                 </button>
             </header>
             <TodoForm addTodo={addTodo} />
