@@ -24,6 +24,12 @@ export const theme = {
     },
     fontFamily: {
       'plus-jakarta-sans': ['Plus Jakarta Sans', 'sans-serif']
+    },
+    backgroundImage: {
+      'mobile-dark' : "url('/src/assets/images/bg-mobile-dark.jpg')",
+      'mobile-light' : "url('/src/assets/images/bg-mobile-light.jpg')",
+      'desktop-dark' : "url('/src/assets/images/bg-desktop-dark.jpg')",
+      'desktop-light' : "url('/src/assets/images/bg-desktop-light.jpg')",
     }
   },
 };

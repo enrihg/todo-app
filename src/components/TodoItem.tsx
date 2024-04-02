@@ -25,7 +25,7 @@ function TodoItem({ todo, remove }: ComponentProps): JSX.Element {
     }
 
     return (
-        <li key={todo.id} className="flex  items-center h-[52px] py-4 px-5 bg-white dark:bg-dark-800">
+        <li key={todo.id} className="flex  items-center h-[52px] py-4 px-5 bg-white dark:bg-dark-800" draggable="true" onDragStart={() => console.log('on drag start')} onDragEnd={() => console.log('on drag end')}>
             <button onClick={toggleCompleted} className={`flex justify-center items-center w-5 h-5 rounded-full border ${completed ? 'bg-gradient-to-r from-gradient-1 to-gradient-2 border-0' : 'dark:border-dark-600'}`}>
                 <img className={completed ? "" : "hidden"} src={iconCheck} alt="complete icon" />
             </button>
