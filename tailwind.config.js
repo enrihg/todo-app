@@ -30,6 +30,9 @@ export const theme = {
       'mobile-light' : "url('/src/assets/images/bg-mobile-light.jpg')",
       'desktop-dark' : "url('/src/assets/images/bg-desktop-dark.jpg')",
       'desktop-light' : "url('/src/assets/images/bg-desktop-light.jpg')",
+    },
+    boxShadow: {
+      'shadow': '0 4px 4px 0 rgb(0, 0, 0, 0.25)'
     }
   },
 };

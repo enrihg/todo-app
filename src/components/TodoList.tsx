@@ -53,10 +53,14 @@ function TodoList(): JSX.Element {
                 </button>
             </header>
             <TodoForm addTodo={addTodo} />
-            <ul className="rounded-[5px] divide-y overflow-hidden">
+            <ul className="rounded-[5px] divide-y overflow-hidden shadow-shadow">
                 {todos.map((todo) => (
                     <TodoItem key={todo.id} todo={todo} remove={removeTodo} />
                 ))}
+                <li className="flex justify-between bg-white dark:bg-dark-800 text-light-400 text-xs pt-4 px-5 pb-5">
+                    <span>5 items left</span>
+                    <button>Clear Completed</button>
+                </li>
             </ul>
         </>
     )
