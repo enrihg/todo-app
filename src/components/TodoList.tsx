@@ -1,9 +1,8 @@
-import { Key, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from 'uuid';
+import Header from "./Header";
 import TodoItem from "./TodoItem";
 import TodoForm from "./TodoForm";
-import iconMoon from "/src/assets/images/icon-moon.svg"
-import iconSun from "/src/assets/images/icon-sun.svg"
 
 const getInitialData = () => {
     const data = JSON.parse(localStorage.getItem("todos")!);
@@ -13,7 +12,6 @@ const getInitialData = () => {
 
 function TodoList(): JSX.Element {
     const [todos, setTodos] = useState(getInitialData);
-    const [darkTheme, setDarkTheme] = useState(false)
     const [completed, setCompleted] = useState(false)
 
     useEffect(() => {
@@ -44,23 +42,9 @@ function TodoList(): JSX.Element {
         })
     }
 
-    const toggleTheme = () => {
-        document.documentElement.classList.toggle('dark');
-        if (document.documentElement.classList.contains('dark')) {
-            setDarkTheme(true)
-        } else {
-            setDarkTheme(false)
-        }
-    }
-
     return (
         <>
-            <header className="flex justify-between items-center pt-12 mb-10">
-                <span className="font-bold text-[20px] text-white tracking-[10px]">TODO</span>
-                <button onClick={toggleTheme}>
-                    <img id="theme-icon" className="w-5 h-5" src={darkTheme ? iconSun : iconMoon} alt="light/dark theme" />
-                </button>
-            </header>
+            <Header/>
             <TodoForm addTodo={addTodo} />
             <ul className="rounded-[5px] divide-y overflow-hidden shadow-shadow">
                 {todos.map((todo: { id: string; text: string; completed: boolean; }) => (
