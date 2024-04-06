@@ -44,7 +44,7 @@ function TodoList(): JSX.Element {
 
     return (
         <>
-            <Header/>
+            {/* <Header/> */}
             <TodoForm addTodo={addTodo} />
             <ul className="rounded-[5px] divide-y overflow-hidden shadow-shadow">
                 {todos.map((todo: { id: string; text: string; completed: boolean; }) => (
