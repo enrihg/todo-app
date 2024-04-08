@@ -14,7 +14,6 @@ const getInitialData = () => {
 
 function App(): JSX.Element {
   const [todos, setTodos] = useState(getInitialData);
-  const [completed, setCompleted] = useState(false);
 
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
@@ -22,7 +21,7 @@ function App(): JSX.Element {
 
   const addTodo = (text: string) => {
     setTodos(prevTodos => {
-      return [...prevTodos, { text: text, id: uuidv4(), completed: completed }]
+      return [...prevTodos, { text: text, id: uuidv4(), completed: false }]
     })
   }
 
@@ -32,14 +31,18 @@ function App(): JSX.Element {
     })
   }
 
-  const toggleCompleted = () => {
-    setCompleted(!completed);
+  const toggleCompleted = (id: string) => {
+    setTodos((item) =>
+      item.map((todo) => (
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo
+      ))
+    )
   }
 
   const clearCompleted = () => {
     setTodos((prevTodos) => {
       return prevTodos.filter((t) => {
-        t.complete === true; console.log(todos.length)
+        t.completed === true; console.log(todos.length)
       })
     })
   }
@@ -48,7 +51,7 @@ function App(): JSX.Element {
     <Main>
       <Header />
       <TodoForm addTodo={addTodo} />
-      <TodoList todos={todos} clearCompleted={clearCompleted} removeTodo={removeTodo} />
+      <TodoList todos={todos} toggleCompleted={toggleCompleted} clearCompleted={clearCompleted} removeTodo={removeTodo} />
     </Main>
   );
 }
