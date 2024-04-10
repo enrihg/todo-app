@@ -1,7 +1,7 @@
 import TodoItem from "./TodoItem";
 
 type ComponentProps = {
-    todos: [{ id: string, text: string, completed: boolean }],
+    todos: [{ id: string, text: string, completed: boolean, filtered: boolean }],
     toggleCompleted: (id: string) => void;
     clearCompleted: () => void;
     removeTodo: (id: string) => void
@@ -16,9 +16,9 @@ function TodoList({ todos, toggleCompleted, clearCompleted, removeTodo }: Compon
    });
 
     return (
-        <ul className="rounded-[5px] divide-y overflow-hidden shadow-shadow">
+        <ul className="rounded-[5px] divide-y dark:divide-dark-700 overflow-hidden shadow-shadow">
             {todos.map((todo) => (
-                <TodoItem key={todo.id} id={todo.id} text={todo.text} completed={todo.completed} toggle={toggleCompleted} remove={removeTodo} />
+                <TodoItem key={todo.id} id={todo.id} text={todo.text} completed={todo.completed} filtered={todo.filtered} toggle={toggleCompleted} remove={removeTodo} />
             ))}
             <li className="flex justify-between bg-white dark:bg-dark-800 text-light-400 text-xs pt-4 px-5 pb-5">
                 <span>{todos.length- itemsCompleted} items left</span>

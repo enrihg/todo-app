@@ -21,6 +21,8 @@ export const theme = {
       'dark-700': 'hsl(237, 14%, 26%)',
       'dark-800': 'hsl(235, 24%, 19%)',
       'dark-900': 'hsl(235, 21%, 11%)',
+
+      'active-dark': 'hsl(220, 98%, 61%)'
     },
     fontFamily: {
       'plus-jakarta-sans': ['Plus Jakarta Sans', 'sans-serif']
