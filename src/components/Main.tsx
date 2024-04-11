@@ -1,8 +1,8 @@
 function Main({ children }): JSX.Element {
   
     return (
-        <main className=' font-plus-jakarta-sans px-6 w-screen h-screen bg-red-40'>
-            <div className=' bg-mobile-light dark:bg-mobile-dark h-[200px] w-screen z-[-1] mx-[-24px] absolute'></div>
+        <main className='max-w-[540px] mx-auto font-plus-jakarta-sans px-6 w-screen h-screen bg-red-40'>
+            <div className='bg-cover bg-mobile-light sm:bg-desktop-light dark:bg-mobile-dark sm:dark:bg-desktop-dark h-[35%] w-screen z-[-1] absolute left-0 top-0'></div>
             {children}
         </main>
     )

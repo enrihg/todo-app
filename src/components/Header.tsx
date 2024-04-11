@@ -15,10 +15,10 @@ function Header() {
     }
 
     return (
-        <header className="flex justify-between items-center pt-12 mb-10">
-            <span className="font-bold text-[20px] text-white tracking-[10px]">TODO</span>
+        <header className="flex justify-between items-center pt-12 lg:pt-[70px] mb-10">
+            <span className="font-bold text-[20px] lg:text-[40px] text-white tracking-[10px] lg:tracking-[15px]">TODO</span>
             <button onClick={toggleTheme}>
-                <img id="theme-icon" className="w-5 h-5" src={darkTheme ? iconSun : iconMoon} alt="light/dark theme" />
+                <img id="theme-icon" className="w-5 lg:w-[25px] h-5 lg:h-[25px]" src={darkTheme ? iconSun : iconMoon} alt="light/dark theme" />
             </button>
         </header>
     )
