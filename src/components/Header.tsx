@@ -2,16 +2,22 @@ import iconMoon from "/src/assets/images/icon-moon.svg"
 import iconSun from "/src/assets/images/icon-sun.svg"
 import { useState } from "react"
 
+const getInitialData = () => {
+    const data = JSON.parse(localStorage.getItem("theme")!);
+    if (!data) return false;
+    return data;
+}
+
 function Header() {
-    const [darkTheme, setDarkTheme] = useState(false)
+    const [darkTheme, setDarkTheme] = useState(getInitialData)
+    if (darkTheme) {
+        document.documentElement.classList.add('dark');
+    }
 
     const toggleTheme = () => {
+        localStorage.setItem("theme", JSON.stringify(!darkTheme))
         document.documentElement.classList.toggle('dark');
-        if (document.documentElement.classList.contains('dark')) {
-            setDarkTheme(true)
-        } else {
-            setDarkTheme(false)
-        }
+        setDarkTheme(!darkTheme);
     }
 
     return (

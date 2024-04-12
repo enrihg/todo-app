@@ -7,7 +7,7 @@ import TodoForm from "./components/TodoForm";
 import TodoList from './components/TodoList';
 import Filter from "./components/Filter";
 
-const getInitialData = () => {
+const getInitialData = () => { //ESTO TENGO QUE ACTUALIZAR PARA SOLUCIONAR LOS TIPOS
     const data = JSON.parse(localStorage.getItem("todos")!);
     if (!data) return [];
     return data;
@@ -47,7 +47,6 @@ function App(): JSX.Element {
     }
 
     const showAll = () => {
-        console.log('filtramos all')
         setTodos((item) =>
             item.map((todo) => (
                 {...todo, filtered: false}
