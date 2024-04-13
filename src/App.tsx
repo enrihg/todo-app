@@ -75,7 +75,7 @@ function App(): JSX.Element {
     }
 
     return (
-        <Main>
+        <Main >
             <Header />
             <TodoForm addTodo={addTodo} />
             <TodoList todos={todos} toggleCompleted={toggleCompleted} clearCompleted={clearCompleted} removeTodo={removeTodo} />
