@@ -7,7 +7,9 @@ import TodoForm from "./components/TodoForm";
 import TodoList from './components/TodoList';
 import Filter from "./components/Filter";
 
-const getInitialData = () => { //ESTO TENGO QUE ACTUALIZAR PARA SOLUCIONAR LOS TIPOS
+type Todos = [{ id: string, text: string, completed: boolean, filtered: boolean }]
+
+const getInitialData = () => {
     const data = JSON.parse(localStorage.getItem("todos")!);
     if (!data) return [];
     return data;
@@ -21,19 +23,19 @@ function App(): JSX.Element {
     }, [todos]);
 
     const addTodo = (text: string) => {
-        setTodos(prevTodos => {
+        setTodos((prevTodos: Todos) => {
             return [...prevTodos, { text: text, id: uuidv4(), completed: false, filtered: false }]
         })
     }
 
     const removeTodo = (id: string) => {
-        setTodos((prevTodos) => {
+        setTodos((prevTodos: Todos) => {
             return prevTodos.filter((t) => t.id !== id);
         })
     }
 
     const toggleCompleted = (id: string) => {
-        setTodos((item) =>
+        setTodos((item: Todos) =>
             item.map((todo) => (
                 todo.id === id ? { ...todo, completed: !todo.completed } : todo
             ))
@@ -41,13 +43,13 @@ function App(): JSX.Element {
     }
 
     const clearCompleted = () => {
-        todos.forEach(todo => {
+        todos.forEach((todo: {completed: boolean, id: string}) => {
             todo.completed === false ? todo : removeTodo(todo.id)
         });
     }
 
     const showAll = () => {
-        setTodos((item) =>
+        setTodos((item : Todos) =>
             item.map((todo) => (
                 {...todo, filtered: false}
             ))
@@ -56,7 +58,7 @@ function App(): JSX.Element {
 
     const showActive = () => {
         showAll()
-        setTodos((item) =>
+        setTodos((item: Todos) =>
             item.map((todo) => (
                 todo.completed ? {...todo, filtered: true} : todo
             ))
@@ -65,7 +67,7 @@ function App(): JSX.Element {
 
     const showCompleted = () => {
         showAll()
-        setTodos((item) =>
+        setTodos((item: Todos) =>
             item.map((todo) => (
                 !todo.completed ? {...todo, filtered: true} : todo
             ))
